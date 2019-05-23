@@ -33,13 +33,14 @@ def site_login():
     # initialize chrome browser
     driver = webdriver.Chrome()
     
-    # go the ther website that vulnerable to XSS and perfrom certain action
+    # going to the website that vulnerable to XSS and perfroming certain actions
+    # example is a XSS challenge in CSA CTF 2019
     driver.get("http://35.231.36.102:1779/login.php")
     driver.find_element_by_name("username").send_keys("admin")
     driver.find_element_by_name("password").send_keys("verysecuredpassword")
     driver.find_element_by_name("submit").click()
     
-    # accept any alert that popped up
+    # accepting any alert that pops up
     while True:
         try:
             alert = driver.switch_to_alert()
@@ -51,10 +52,10 @@ def site_login():
     # maintaing the session for 2 minutes
     time.sleep(120)
     
-    # click logout
+    # clicking logout
     driver.get("http://35.231.36.102:1779/logout.php")
     
-    # close browser
+    # closing browser normally
     driver.quit()
 
 i = 0
